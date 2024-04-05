@@ -1,14 +1,2 @@
 /* Use this file to optionally override global css styles and use with caution. */
 /* See README.md for hints and examples: https://github.com/medic/cht-tech-radar-core */
-:root {
-    --color-gray-dark: #38464D!important;
-    --color-gray-dark-alt: #4C606A!important;
-    --color-gray-normal: #607681!important;
- 
-    --color-green: #4A9940!important;
-    --color-orange: #E4AE1D!important;
-    --color-blue: #535EAA!important;
-    --color-marine: #E35726!important;
-    --color-red: #D74A39!important;
-    --color-brand: #38464D!important;
- }
