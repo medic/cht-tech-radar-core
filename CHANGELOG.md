@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.0.2 (2024-04-09)
+
+### Other
+
+- Revert to 1583363 (d30ee8f9)
+
 ## Version v3.6.0 (2023-06-29)
 
 ### Features
