@@ -1,4 +1,4 @@
-name: Test CHT Technology Radar
+name: Test AOE Technology Radar
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - uses: actions/checkout@master
     - uses: actions/setup-node@v3
       with:
         node-version: 'lts/*'
