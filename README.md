@@ -10,10 +10,9 @@ The repository for the [CHT Technology Radar for Contributors](https://docs.comm
 
 ## TODO Create your own radar 
 
-### Step 1: Create a new project
+### Step 1: Create a new radar starting from this respository
 
-Ensure node.js ist installed and create a new project by creating a new folder with a `package.json`
-file like the following and adapt to your needs:
+Ensure `node.js` is installed. Create a new project by creating a new folder with a `package.json` file like the following and adapt it to your needs:
 
 ```json
 {
@@ -61,7 +60,7 @@ Open the `config.json` file and configure the radar to your needs.
 | social    | Social links in the footer. See config below                                                                                   |
 | imprint   | URL to the legal information                                                                                                   |
 | labels    | Configure the labels to change the texts and labels of the radar                                                               |
-| tags      | (optional) Use to render only items, which contain at least one of the specified tags. e.g `["frontend", "backend"]`           |
+| tags      | (optional) Use to render only items, which contain at least one of the specified tags. e.g `["data", "tool"]`           |
 | editUrl   | (optional) If set, an edit button will be shown next to the revision.<br/> You can use placeholders for `{id}` and `{release}` |
 
 #### `config.toggles`
