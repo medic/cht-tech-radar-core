@@ -26,13 +26,14 @@ export default function App({ Component, pageProps, router }: CustomAppProps) {
         src={`https://www.googletagmanager.com/gtag/js?id=G-98W4V2NTPJ`}
       />
 
-      <Script id="gtm-script" strategy="lazyOnload">
+      <Script strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
-          gtag('config', 'G-98W4V2NTPJ');
+          gtag('config', 'G-98W4V2NTPJ', {
+            page_path: window.location.pathname,
+            });
          `}
       </Script>
 
