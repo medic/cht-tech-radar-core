@@ -26,7 +26,7 @@ export default function App({ Component, pageProps, router }: CustomAppProps) {
         src={`https://www.googletagmanager.com/gtag/js?id=G-98W4V2NTPJ`}
       />
 
-      <Script strategy="lazyOnload">
+      <Script id="gtm-script" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
