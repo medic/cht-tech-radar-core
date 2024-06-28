@@ -31,10 +31,11 @@ export default function App({ Component, pageProps, router }: CustomAppProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-98W4V2NTPJ',{
-          page_path: window.location.pathname;
+
+          gtag('config', 'G-98W4V2NTPJ');
          `}
       </Script>
+
       <Head>
         <title>{formatTitle()}TEST</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
