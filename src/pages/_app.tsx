@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 
 import { Layout, type LayoutClass } from "@/components/Layout/Layout";
 import { formatTitle } from "@/lib/format";
@@ -20,6 +21,11 @@ type CustomAppProps = AppProps & {
 export default function App({ Component, pageProps, router }: CustomAppProps) {
   return (
     <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-98W4V2NTPJ`}
+      />
+      
       <Head>
         <title>{formatTitle()}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
