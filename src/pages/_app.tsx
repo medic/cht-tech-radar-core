@@ -23,6 +23,22 @@ export default function App({ Component, pageProps, router }: CustomAppProps) {
   const jsUrl = getJsUrl();
   return (
     <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-98W4V2NTPJ`}
+      />
+
+      <Script id="gtm-script" strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-98W4V2NTPJ', {
+            page_path: window.location.pathname,
+            });
+         `}
+      </Script>
+
       <Head>
         <title>{formatTitle()}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
