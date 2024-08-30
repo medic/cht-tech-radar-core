@@ -1,6 +1,7 @@
 {
-  "name": "aoe_technology_radar",
-  "version": "4.4.0",
+  "name": "cht_technology_radar",
+  "version": "1.1.0",
+  "description": "CHT Technology Radar Core",
   "bin": {
     "techradar": "./bin/techradar.js"
   },
