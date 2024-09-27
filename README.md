@@ -4,11 +4,25 @@ A static site generator for the CHT Technology Radars.
 
 ## Looking for the CHT Technology Radars content?
 
-The repository for the [CHT Technology Radar for Implementers](https://docs.communityhealthtoolkit.org/cht-tech-radar-implementers/index.html) can be found in [medic/cht-tech-radar-implementers](https://github.com/medic/cht-tech-radar-implementers).
+The repository for the [CHT Technology Radar for Implementers](https://docs.communityhealthtoolkit.org/cht-tech-radar-implementers/index.html) can be found in [medic/cht-tech-radar-implementers](https://github.com/medic/cht-tech-radar-implementers). See the [live version](https://docs.communityhealthtoolkit.org/cht-tech-radar-implementers/).
 
-The repository for the [CHT Technology Radar for Contributors](https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors/index.html) can be found in [medic/cht-tech-radar-contributors](https://github.com/medic/cht-tech-radar-contributors).
+The repository for the [CHT Technology Radar for Contributors](https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors/index.html) can be found in [medic/cht-tech-radar-contributors](https://github.com/medic/cht-tech-radar-contributors). See the [live version](https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors/).
 
-## TODO Create your own radar 
+## Update this repository
+This repository is a fork of [AOEpeople/aoe_technology_radar](https://github.com/AOEpeople/aoe_technology_radar). Some changes were made so that the Tech Radar match the CHT look-and-feel. Manual changes are needed to keep this repository up to date with the original repository.
+
+When a new AOE Tech Radar version is available, follow the following steps to update this repository accordingly:
+
+* Check if there is an existing [Release](https://github.com/medic/cht-tech-radar-core/releases) matching the content of the `main` branch. If no such release exist, create one from the current `main` branch.
+* Sync the fork with [AOEpeople/aoe_technology_radar](https://github.com/AOEpeople/aoe_technology_radar). Don't worry if the CHT-related commits are discared, as they are saved in the release tag you have just created.
+* Re-apply the CHT look-and-feel changes to the freshly updated `main` branch. Update the `package.json` version, and create a new release. 
+* Upgrade the `cht_technology_radar` version in the CHT Technology Radars (for Contributors and for Implementers) to correspond to the new `cht-tech-radar-core` release.
+
+```json
+"cht_technology_radar": "github:medic/cht-tech-radar-core#1.2.0"
+```
+
+## Create your own radar 
 
 ### Step 1: Create a new radar starting from this respository
 
@@ -24,7 +38,7 @@ Ensure `node.js` is installed. Create a new project by creating a new folder wit
     "serve": "techradar serve"
   },
   "dependencies": {
-    "cht_technology_radar": "^2"
+    "cht_technology_radar": "github:medic/cht-tech-radar-core#1.2.0"
   }
 }
 ```
