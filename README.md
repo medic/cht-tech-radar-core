@@ -19,7 +19,7 @@ When a new AOE Tech Radar version is available, follow the following steps to up
 * Upgrade the `cht_technology_radar` version in the CHT Technology Radars (for Contributors and for Implementers) to correspond to the new `cht-tech-radar-core` release.
 
 ```json
-"cht_technology_radar": "github:medic/cht-tech-radar-core#1.2.0"
+"cht_technology_radar": "github:medic/cht-tech-radar-core#1.3.0"
 ```
 
 ## Create your own radar 
@@ -34,11 +34,11 @@ Ensure `node.js` is installed. Create a new project by creating a new folder wit
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "techradar build",
+    "build": "techradar build --strict",
     "serve": "techradar serve"
   },
   "dependencies": {
-    "cht_technology_radar": "github:medic/cht-tech-radar-core#1.2.0"
+    "cht_technology_radar": "github:medic/cht-tech-radar-core#1.3.0"
   }
 }
 ```
@@ -46,6 +46,8 @@ Ensure `node.js` is installed. Create a new project by creating a new folder wit
 Run `npm install` to install the dependencies and run `npm run build` to create the initial radar.
 This will also create a basic bootstrap of all required files, including the `config.json` and
 the `about.md` if they do not exist yet.
+
+Note: The `--strict` flag will break the build process if there are any errors in the markdown files. If you do not care about errors, you can remove the `--strict` flag.
 
 ### Step 2: Change logo and the favicon
 
@@ -59,28 +61,31 @@ file as `logoFile` inside the `config.json`. e.g. `"logoFile": "acme-logo.png"`
 
 Open the `config.json` file and configure the radar to your needs.
 
-| Attribute | Description                                                                                                                    |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| basePath  | Set if hosting under a sub-path, otherwise set it to `/`. Default is `/techradar`                                              |
-| baseUrl   | Set to the full URL, where the radar will be hosted. Will be used for sitemap.xml. `https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors`             |
-| logoFile  | (optional) Filepath in public folder. Default is `logo.svg`                                                                    |
-| toggles   | (optional) Modify the behaviour and contents of the radar. See config below.                                                   |
-| sections  | (optional) Modify the order of sections (`radar`, `tags`, `list`)                                                              |
-| colors    | A map of colors for the radar. Can be any valid CSS color value                                                                |
-| quadrants | Config of the 4 quadrants of the radar. See config below.                                                                      |
-| rings     | Config of the rings of the radar. See config below.                                                                            |
-| flags     | Config of the flags of the radar. See config below                                                                             |
-| chart     | If you hava a lot of items, you can increase the `size` to scale down the radar                                                |
-| social    | Social links in the footer. See config below                                                                                   |
-| imprint   | URL to the legal information                                                                                                   |
-| labels    | Configure the labels to change the texts and labels of the radar                                                               |
-| tags      | (optional) Use to render only items, which contain at least one of the specified tags. e.g `["data", "tool"]`           |
-| editUrl   | (optional) If set, an edit button will be shown next to the revision.<br/> You can use placeholders for `{id}` and `{release}` |
+| Attribute   | Description                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| basePath    | Set if hosting under a sub-path, otherwise set it to `/`. Default is `/techradar`                                              |
+| baseUrl     | Set to the full URL, where the radar will be hosted. Will be used for sitemap.xml. `https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors`              |
+| logoFile    | (optional) Filepath in public folder. Default is `logo.svg`                                                                    |
+| jsFile      | (optional) Filepath in public folder or URL to enable include of custom script                                                 |
+| toggles     | (optional) Modify the behaviour and contents of the radar. See config below.                                                   |
+| sections    | (optional) Modify the order of sections (`radar`, `tags`, `list`)                                                              |
+| fuzzySearch | (optional) Modify the fuse.js options (https://www.fusejs.io/api/options.html)                                                 |
+| colors      | A map of colors for the radar. Can be any valid CSS color value                                                                |
+| quadrants   | Config of the 4 quadrants of the radar. See config below.                                                                      |
+| rings       | Config of the rings of the radar. See config below.                                                                            |
+| flags       | Config of the flags of the radar. See config below                                                                             |
+| chart       | If you hava a lot of items, you can increase the `size` to scale down the radar                                                |
+| social      | Social links in the footer. See config below                                                                                   |
+| imprint     | URL to the legal information                                                                                                   |
+| labels      | Configure the labels to change the texts and labels of the radar                                                               |
+| tags        | (optional) Use to render only items, which contain at least one of the specified tags. e.g `["data", "tool"]`            |
+| editUrl     | (optional) If set, an edit button will be shown next to the revision.<br/> You can use placeholders for `{id}` and `{release}` |
 
 #### `config.toggles`
 
 | Attribute        | Description                                             |
 | ---------------- | ------------------------------------------------------- |
+| showSearch       | Render the radar search on the header?                  |
 | showChart        | Render the radar visualization on the homepage?         |
 | showTagFilter    | Render the tag filter below the radar?                  |
 | showQuadrantList | Render the items below the radar?                       |
@@ -89,6 +94,10 @@ Open the `config.json` file and configure the radar to your needs.
 #### `config.sections`
 
 An array with of `radar`, `tags`, `list` in order you want them to appear on the page.
+
+#### `config.fuzzySearch`
+
+An object that represents the fuse.js options, which is used to search the radar.
 
 #### `config.quadrants`
 
@@ -249,7 +258,8 @@ If you want to change core functionality of the radar, you can clone this reposi
 radar's markdown-files, config.json and about.md in the `data` folder. Run `npm run build:data` to
 parse the markdown files and create a `data.json` and then run `npm run dev` to start the
 development server, which will be available at `http://localhost:3000/techradar` or the path
-you specified via `basePath`.
+you specified via `basePath`. Run `npm run build:data -- --strict` to break the build process
+when encountering errors.
 
 ## Note
 The CHT Technology Radars are built starting from the [AOE Tech Radar content](https://www.aoe.com/techradar/index.html).
