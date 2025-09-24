@@ -1,47 +1,36 @@
-# AOE Technology Radar
+# CHT Technology Radar Core
 
-A static site generator for AOE Technology Radar
+A static site generator for the CHT Technology Radars.
 
-![Screenshot of the AOE Technology Radar](./docs/assets/screenshot-techradar.png)
+## Looking for the CHT Technology Radars content?
 
-## Looking for the AOE Tech Radar content?
+The repository for the [CHT Technology Radar for Implementers](https://docs.communityhealthtoolkit.org/cht-tech-radar-implementers/index.html) can be found in [medic/cht-tech-radar-implementers](https://github.com/medic/cht-tech-radar-implementers). See the [live version](https://docs.communityhealthtoolkit.org/cht-tech-radar-implementers/).
 
-- The repository is now found here: https://github.com/AOEpeople/techradar
-- The AOE Tech radar is deployed here: https://www.aoe.com/techradar/index.html
+The repository for the [CHT Technology Radar for Contributors](https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors/index.html) can be found in [medic/cht-tech-radar-contributors](https://github.com/medic/cht-tech-radar-contributors). See the [live version](https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors/).
 
-## ✨ Version 4.0.0
+## Update this repository
+This repository is a fork of [AOEpeople/aoe_technology_radar](https://github.com/AOEpeople/aoe_technology_radar). Some changes were made so that the Tech Radar match the CHT look-and-feel. Manual changes are needed to keep this repository up to date with the original repository.
 
-Version 4.0.0 is a complete rewrite of the AOE Technology Radar. It is now based
-on [Next.js](https://nextjs.org/) to provide enhanced static site generation. The visualization has
-been rewritten without the need for the D3 dependency. New features include a fuzzy search based on
-Fuse.js, non-overlapping blips on the radar, and a reworked tag filter on the homepage.
+When a new AOE Tech Radar version is available, follow the following steps to update this repository accordingly:
 
-To migrate from the old version please migrate your `package.json`'s scripts and create a
-new `config.json` based on the documentation below. You can find a reference implementation in
-our [repo](https://github.com/AOEpeople/techradar). The old version is still available in the `v3`
-branch.
+* Check if there is an existing [Release](https://github.com/medic/cht-tech-radar-core/releases) matching the content of the `main` branch. If no such release exist, create one from the current `main` branch.
+* Sync the fork with [AOEpeople/aoe_technology_radar](https://github.com/AOEpeople/aoe_technology_radar). Don't worry if the CHT-related commits are discared, as they are saved in the release tag you have just created.
+* Re-apply the CHT look-and-feel changes to the freshly updated `main` branch. Update the `package.json` version, and create a new release. 
+* Upgrade the `cht_technology_radar` version in the CHT Technology Radars (for Contributors and for Implementers) to correspond to the new `cht-tech-radar-core` release.
 
-Version 4.0.0 also removes the .html extension from the URLs. If you want to support the old URLs,
-we recommend to add a redirect rule. For nginx, you can use the following rule:
-
-```nginx
-rewrite ^/techradar/(.+)\.html$ /techradar/$1/ permanent;
+```json
+"cht_technology_radar": "github:medic/cht-tech-radar-core#1.3.0"
 ```
 
-## Create your own radar
+## Create your own radar 
 
-The generator is free to use under Open Source License - in fact there are already some other Radars
-published based on our Radar and there are also Contributions back. However, it would be nice to
-mention in radar that the generator is based on this repository.
+### Step 1: Create a new radar starting from this respository
 
-### Step 1: Create a new project
-
-Ensure node.js ist installed and create a new project by creating a new folder with a `package.json`
-file like the following and adapt to your needs:
+Ensure `node.js` is installed. Create a new project by creating a new folder with a `package.json` file like the following and adapt it to your needs:
 
 ```json
 {
-  "name": "aoe-techradar",
+  "name": "cht-techradar",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
@@ -49,7 +38,7 @@ file like the following and adapt to your needs:
     "serve": "techradar serve"
   },
   "dependencies": {
-    "aoe_technology_radar": "^4"
+    "cht_technology_radar": "github:medic/cht-tech-radar-core#1.3.0"
   }
 }
 ```
@@ -75,7 +64,7 @@ Open the `config.json` file and configure the radar to your needs.
 | Attribute   | Description                                                                                                                    |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | basePath    | Set if hosting under a sub-path, otherwise set it to `/`. Default is `/techradar`                                              |
-| baseUrl     | Set to the full URL, where the radar will be hosted. Will be used for sitemap.xml. `https://www.aoe.com/techradar`             |
+| baseUrl     | Set to the full URL, where the radar will be hosted. Will be used for sitemap.xml. `https://docs.communityhealthtoolkit.org/cht-tech-radar-contributors`              |
 | logoFile    | (optional) Filepath in public folder. Default is `logo.svg`                                                                    |
 | jsFile      | (optional) Filepath in public folder or URL to enable include of custom script                                                 |
 | toggles     | (optional) Modify the behaviour and contents of the radar. See config below.                                                   |
@@ -89,7 +78,7 @@ Open the `config.json` file and configure the radar to your needs.
 | social      | Social links in the footer. See config below                                                                                   |
 | imprint     | URL to the legal information                                                                                                   |
 | labels      | Configure the labels to change the texts and labels of the radar                                                               |
-| tags        | (optional) Use to render only items, which contain at least one of the specified tags. e.g `["frontend", "backend"]`           |
+| tags        | (optional) Use to render only items, which contain at least one of the specified tags. e.g `["data", "tool"]`            |
 | editUrl     | (optional) If set, an edit button will be shown next to the revision.<br/> You can use placeholders for `{id}` and `{release}` |
 
 #### `config.toggles`
@@ -271,3 +260,7 @@ parse the markdown files and create a `data.json` and then run `npm run dev` to 
 development server, which will be available at `http://localhost:3000/techradar` or the path
 you specified via `basePath`. Run `npm run build:data -- --strict` to break the build process
 when encountering errors.
+
+## Note
+The CHT Technology Radars are built starting from the [AOE Tech Radar content](https://www.aoe.com/techradar/index.html).
+If you want to build your own Technical Radar you may want to have a look at [AOE Tech Radar GitHub repository](https://github.com/AOEpeople/aoe_technology_radar).
