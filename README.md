@@ -261,6 +261,6 @@ development server, which will be available at `http://localhost:3000/techradar`
 you specified via `basePath`. Run `npm run build:data -- --strict` to break the build process
 when encountering errors.
 
-## Note
-The CHT Technology Radars are built starting from the [AOE Tech Radar content](https://www.aoe.com/techradar/index.html).
+> [!NOTE]
+> The CHT Technology Radars are built starting from the [AOE Tech Radar content](https://www.aoe.com/techradar/index.html).
 If you want to build your own Technical Radar you may want to have a look at [AOE Tech Radar GitHub repository](https://github.com/AOEpeople/aoe_technology_radar).
